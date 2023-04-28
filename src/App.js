@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import { Routes, Route } from 'react-router-dom';
+import Navigation from '../src/components/navigation/navigation';
+import Home from './components/home/home';
+import AllData from './components/all-data/all-data';
+import Result from './components/result/result';
+import Footer from '../src/components/footer/Footer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	return (
+		<AppContainer className='app-container'>
+			<Routes>
+				<Route path='/' element={<Navigation />}>
+					<Route index element={<Home />} />
+					<Route path='all-data' element={<AllData />} />
+					<Route path='result' element={<Result />} />
+				</Route>
+			</Routes>
+
+			<Footer />
+		</AppContainer>
+	);
+};
+
+const AppContainer = styled.div`
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+`;
 
 export default App;
